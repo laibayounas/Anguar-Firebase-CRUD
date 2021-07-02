@@ -1,0 +1,24 @@
+<div class="list row">
+    <div class="col-md-6">
+        <h4>Vendors List</h4>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let v of vendor; let i = index" [class.active]="i == currentIndex" (click)="setActiveVendor(v, i)">
+                {{ v.title }}
+            </li>
+        </ul>
+
+        <button class="m-3 btn btn-sm btn-danger" (click)="removeAllVendor()">
+      Remove All
+    </button>
+    </div>
+    <div class="col-md-6">
+        <div *ngIf="currentVendor">
+            <app-vendor-details (refreshList)="refreshList()" [vendor]="currentVendor"></app-vendor-details>
+        </div>
+
+        <div *ngIf="!currentVendor">
+            <br />
+            <p>Please click on a Vendor...</p>
+        </div>
+    </div>
+</div>
